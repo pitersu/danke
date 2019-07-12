@@ -8,6 +8,8 @@ import './assets/js/flexble'
 Vue.config.productionTip = false
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import "./module/zl"
+import "./module/api"
 Vue.use(MintUI)
 new Vue({
   router,
