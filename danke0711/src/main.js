@@ -10,6 +10,8 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import "./module/zl"
 import "./module/api"
+import { Popup } from 'mint-ui';
+Vue.component(Popup.name, Popup);
 Vue.use(MintUI)
 new Vue({
   router,

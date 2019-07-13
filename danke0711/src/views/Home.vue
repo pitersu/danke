@@ -13,6 +13,17 @@
             value
             autocomplete="off"
           />
+          <div class="minu">
+          <p v-if="popupVisible===true">|||</p>
+          <p v-else @click="showNone" >三</p>
+          <mt-popup v-model="popupVisible" position="bottom" class="minuList">
+            <ul>
+              <li @click="shouye">首页</li>
+              <router-link to="/login"><li>个人中心</li></router-link>
+              <router-link to="/join"><li style="border-bottom:0">业主加盟</li></router-link>
+            </ul>
+          </mt-popup>
+        </div>
         </div>
       </div>
     </div>
@@ -126,8 +137,10 @@ export default {
   data() {
     return {
       story:[],
+      popupVisible:false,
       vis: {
-        flag: false
+        flag: false,
+        
       }
     };
   },
@@ -144,6 +157,12 @@ export default {
     gotop() {
       // console.log(this.$refs.home)
       this.$refs.home.scrollTop = 0;
+    },
+    showNone(){
+      this.popupVisible=!this.popupVisible;
+    },
+    shouye(){
+      this.$router.go(0);
     }
   },
 created() {
@@ -167,123 +186,161 @@ created() {
   left: 0;
   overflow: auto;
 }
-.title-bg {
-  position: relative;
-  height: 0.94rem;
+
+.title-bg{
+    position: relative;
+    height: 0.94rem;
 }
-.title {
-  box-sizing: border-box;
-  z-index: 998;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  height: 0.94rem;
-  background: #f6f7f8;
-  margin: 0;
-  padding: 0 0.2rem;
+.title{
+    box-sizing: border-box;
+    z-index: 998;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 0.94rem;
+    background: #f6f7f8;
+    margin:0;
+    padding:0 0.2rem;
 }
-.form_bg {
+.form_bg{
+  
   display: block;
-  width: 6rem;
-  // position: relative;
-  top: 0.88rem;
-  left: 0.2rem;
-  height: 0.7rem;
-  padding-left: 0.9rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  border: 1px solid #e5e5e5;
-  box-sizing: border-box;
-  background: #f6f7f8;
-  margin-bottom: 0.3rem;
-  margin-top: 0.1rem;
-  img {
+    width: 6rem;
+    // position: relative;
+    top: 0.88rem;
+    left: 0.2rem;
+    height: 0.7rem;
+    padding-left: 0.9rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    background: #f6f7f8;
+    margin-bottom: 0.3rem;
+    margin-top:0.1rem;
+    img{
     position: absolute;
     left: 0.5rem;
     top: 0.2rem;
     width: 5%;
-  }
-  input {
+    }
+    input{
     width: 100%;
-    height: 0.7rem;
+    height:0.7rem;
     line-height: 0.4rem;
     color: #000;
-    margin-right: 0.125rem;
+    margin-right: .125rem;
     border: 0;
     vertical-align: top;
     font-size: 0.24rem;
     border: none;
     background-color: #f6f7f8;
-  }
-}
-.list {
-  margin: 0.4rem 0.32rem;
-  overflow: hidden;
-  padding: 0 0 0.45rem;
-  border-bottom: 1px solid #e4e8eb;
-  li {
-    width: 25%;
-    float: left;
-    text-align: center;
-    a {
-      width: 25%;
+    }
+    .minu{
+      position: absolute;
+      top:0.1rem;
+      right:0.3rem;
+      font-size:0.4rem;
+      border:0.02rem solid rgb(241, 234, 234);
+      width: 0.6rem;
+      height: 0.6rem;
       text-align: center;
-      img {
-        width: 0.8rem;
-        height: 0.8rem;
-        margin: 0 auto;
-      }
-      span {
-        position: relative;
-        top: 0.2rem;
-        color: #666;
+      line-height: 0.6rem;
+      border-radius: 50%;
+      color:#ccc;
+      .minuList{
+        position: absolute;
+        top:1rem;
+        left:0rem;
+        right:-0.5rem;
+        width: 3rem;
+        height: 2.7rem;
+        ul{
+          width: 3rem;
+          height: 2.7rem;
+          li{
+            width: 100%;
+            height: 0.9rem;
+            border-bottom: 1px solid #e6e6e8;
+            line-height: 0.9rem;
+            text-align: center;
+            color:#333;
+            font-size: 0.12rem;
+          }
+        }
       }
     }
-  }
+}
+.list{
+    margin: 0.4rem 0.32rem;
+    overflow: hidden;
+    padding: 0 0 0.45rem;
+    border-bottom: 1px solid #e4e8eb;
+    li{
+      width:25%;
+      float: left;
+      text-align: center;
+      a{
+        width:25%;
+        text-align: center;
+        img{
+          width: 0.8rem;
+          height: 0.8rem;
+          margin:0 auto;
+        }
+        span{
+          position: relative;
+          top: 0.2rem;
+          color: #666;
+        }
+      }
+    }
 }
 .sq_area {
-  height: 3.8rem;
-  border-bottom: 1px solid #ccc;
-  padding: 0 0.32rem 0;
+    height: 3.8rem;
+    border-bottom: 1px solid #ccc;
+    padding: 0 0.32rem 0;
 }
 .box-title {
-  overflow: hidden;
+    overflow: hidden;
 }
 .box-title-fl {
-  padding: 0.35rem 0;
-  span {
-    font-size: 0.36rem;
-    color: #333;
-    font-weight: 700;
-  }
-  p {
-    font-size: 0.2rem;
-    color: #999;
-  }
-}
+    padding: 0.35rem 0;
+    span {
+        font-size: 0.36rem;
+        color: #333;
+        font-weight: 700;
+    }
+    p {
+        font-size: 0.2rem;
+        color: #999;
+    }
+} 
 .sq_area1 {
-  height: 5.85rem;
-  border-bottom: 1px solid #ccc;
-  padding: 0 0.32rem 0;
+    height: 5.85rem;
+    border-bottom: 1px solid #ccc;
+    padding: 0 0.32rem 0;
 }
 
+
 .go-top {
-  position: fixed;
-  width: 0.84rem;
-  height: 0.84rem;
-  right: 0.32rem;
-  bottom: 2rem;
-  z-index: 14;
-  img {
-    width: 100%;
-  }
+    position: fixed;
+    width: 0.84rem;
+    height: 0.84rem;
+    right: 0.32rem;
+    bottom: 2rem;
+    z-index: 14;
+    img{
+      width:100%;
+    }
 }
 // 蛋壳故事
 .danke_story {
   margin: 0 0.32rem 0.4rem;
   img{
-    width: 100%;
-    height: 100%;
+    width: 2.35rem;
+    height: 1.75rem;
+    float: left;
   }
 }
 .stroy_title {
@@ -317,6 +374,24 @@ created() {
 }
 .story_block {
   margin-bottom: 0.35rem;
+}
+.story_word{
+  height: 1.68rem;
+  width: 4.2rem;
+  float: right;
+ 
+  span{
+    font-weight: 700;
+    font-size: 0.28rem
+  }
+  p{
+    padding-top: 0.15rem;
+    font-size: 0.24rem;
+    color: #999999;
+    height: 1.27rem;
+    overflow: hidden;
+   text-overflow: ellipsis;
+  }
 }
 </style>
 

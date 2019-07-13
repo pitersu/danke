@@ -8,7 +8,7 @@
     </div>
       <div class="city" v-show="flag">
         <ul>
-          <li v-for="item in cities" :key="item.id" @click="changeCity(item.name)" >{{item.name}}</li>
+          <li v-for="item in cities" :key="item.id" @click="changeCity(item.shortname)">{{item.name}}</li>
         </ul>
       </div>
   </div>

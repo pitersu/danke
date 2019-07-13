@@ -1,13 +1,13 @@
 <template>
   <div>
       <div class="swiper-container">
-      <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="item in details" :key="item.id">
-                <!-- <img v-for="(item2,index) in item.photos" :src="item2"  :key="index"/> -->
-              <img :src="item.photos" alt="">
-         </div>
+          <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="item in details" :key="item.id">
+                    <!-- <img v-for="(item2,index) in item.photos" :src="item2"  :key="index"/> -->
+                  <img :src="item.pho" alt="">
+            </div>
+        </div>
     </div>
-</div>
   </div>
 </template>
 <script>
@@ -22,7 +22,7 @@ export default {
    created(){
       this.$axios.get("http://localhost:3000/list").then((res)=>{
         this.details = res.data
-         console.log(res.data.price)
+        //  console.log(res.data.price)
       })
   },
   watch: {
